@@ -1,0 +1,45 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /spring
+  
+spring:
+  application:
+    name: SPRING-BOOT-WITH-EXTERNALIZE-CONFIG-APP       
+# Data Base Properties    
+  data:
+    mongodb:
+      username: ${MONGODB_USER}
+      password: ${MONGODB_PASS}
+      port: ${MONGODB_PORT}
+      database: ${MONGODB_DB}
+      uri: ${MONGODB_URI}
+      auto-index-creation: true
+
+app:
+   username: ${MONGODB_USER}
+   password: ${MONGODB_PASS}
+   port: ${MONGODB_PORT}
+   database: ${MONGODB_DB}
+   uri: ${MONGODB_URI}
+---
+spring:
+  profiles:
+    active:
+    - dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+      
